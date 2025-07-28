@@ -86,7 +86,7 @@
                 <label className="block text-sm text-gray-300 mb-1">Password</label>
                 <input
                   type="password"
-                  placeholder="Masukkan password"
+                  placeholder="Enter the password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full p-3 rounded-xl bg-gray-800 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-400 focus:outline-none"
@@ -94,12 +94,12 @@
               </div>
               <button
                 onClick={() => {
-                  if (password === "Kenz Suka Shin Hein") setIsLoggedIn(true);
-                  else alert("Password salah!");
+                  if (password === "Kenz Suka Shin Hae In") setIsLoggedIn(true);
+                  else alert("Wrong password!");
                 }}
                 className="w-full bg-indigo-600 hover:bg-indigo-700 transition duration-200 text-white font-semibold py-3 mt-2 rounded-xl shadow-md"
               >
-                Masuk Panel
+                Create Panel
               </button>
               <p className="text-xs text-center text-gray-400 mt-4">© {new Date().getFullYear()} Cpanel by Kenz</p>
             </div>
@@ -108,7 +108,7 @@
       }
 
       const handleCreate = async () => {
-        if (!nameServer) return alert("Name server wajib diisi");
+        if (!nameServer) return alert("Please put name server");
         try {
           const url = `https://pterodactyl-ten.vercel.app/create/pterov2?domain=${domain}&apikeyptero=${apikey}&capikeyptero=${capikey}&nameserver=${nameServer}&disk=${disk}&cpu=${cpu}`;
           const res = await fetch(url);
@@ -116,7 +116,7 @@
           if (data.status === true || data.success === true) setCreatedCount(prev => prev + 1);
           setResult(data);
         } catch {
-          setResult({ status: false, message: "Error saat membuat panel" });
+          setResult({ status: false, message: "Error create panel !" });
         }
       };
 
@@ -124,7 +124,7 @@
         <div className="flex flex-col md:flex-row min-h-screen animate__animated animate__fadeIn">
           <div className="w-full md:w-64 bg-gray-900 p-6 flex flex-col items-center space-y-4 relative">
             <img src="https://files.catbox.moe/617kzg.jpg" className="rounded-full border-2 border-white w-24 h-24" alt="profile" />
-            <h1 className="font-bold text-xl text-center">Cpanel by Kenz</h1>
+            <h1 className="font-bold text-xl text-center">Kenz X Shin Hae-In</h1>
             <button className="absolute top-4 left-4 text-2xl" onClick={() => setInfoOpen(!infoOpen)}>⋮</button>
           </div>
 
@@ -150,7 +150,7 @@
 
           {result && (
             <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 max-w-md w-full glass p-4 rounded shadow-xl z-50 animate__animated animate__fadeInUp">
-              <h3 className="font-bold text-lg text-blue-300">Hasil Create Panel</h3>
+              <h3 className="font-bold text-lg text-blue-300">Result Create Panel</h3>
               <pre className="bg-black bg-opacity-20 text-green-200 text-xs mt-2 p-2 rounded overflow-auto max-h-60">{JSON.stringify(result, null, 2)}</pre>
               <button onClick={() => navigator.clipboard.writeText(JSON.stringify(result))} className="text-blue-400 hover:underline mt-2">📋 Copy Data</button>
             </div>
