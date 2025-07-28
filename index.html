@@ -191,6 +191,24 @@
             </div>
           )}
         </div>
+        <audio id="backgroundMusic" loop autoplay>
+  <source src="https://h.uguu.se/zlNJCEGv.m4a" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  // You might want to add a play/pause button for user control,
+  // as autoplay can be blocked by browsers
+  window.addEventListener('load', () => {
+    const audio = document.getElementById('backgroundMusic');
+    // Attempt to play, but be aware of browser autoplay policies
+    audio.play().catch(error => {
+      console.log('Autoplay prevented:', error);
+      // Inform the user or provide a button to play the music
+    });
+  });
+</script>
+  
       );
     }
 
